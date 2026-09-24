@@ -1,19 +1,20 @@
 import random
 
-canvas_width = 1900
-canvas_height = 1060
+frame_width = 2500
+frame_height = 1400
+canvas_width = 2400
+canvas_height = 1300
 heigh_multiplier = 1000
-speed = 0.01
+min_val = 1
+max_val = 400
+size = 60
+default_speed = 0.01
 
 
 def generate_data():
     """Generate and draw random data"""
 
     global data
-
-    min_val = 1
-    max_val = 100
-    size = 50
 
     data = []
     for _ in range(size):

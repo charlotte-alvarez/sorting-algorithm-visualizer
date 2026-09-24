@@ -7,7 +7,9 @@ from data_visualization import (
     draw_data,
     canvas_height,
     canvas_width,
-    speed,
+    default_speed,
+    frame_height,
+    frame_width,
 )
 
 
@@ -22,13 +24,15 @@ algorithm_list = [
 root = Tk()
 root.title("Sorting Algorithm Visualizer - by Char :3")
 root.config(bg="black")
-mainframe = ttk.Frame(root, width=1920, height=1080, padding=(3, 3, 12, 12))
+mainframe = ttk.Frame(
+    root, width=frame_width, height=frame_height, padding=(3, 3, 12, 12)
+)
 
 # Insert the frame into the user interface
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 
 # Set up the canvas
-canvas = Canvas(root, width=canvas_width, height=canvas_height, bg="white")
+canvas = Canvas(root, width=canvas_width, height=canvas_height, bg="black")
 canvas.grid(row=1, column=0, padx=10, pady=5)
 
 # Set up the algorithm selection
@@ -43,14 +47,41 @@ algorithm_menu.grid(row=0, column=1, padx=5, pady=5)
 algorithm_menu.current(0)
 
 
+# Set up speed
+speed = default_speed
+sp = StringVar()
+label = ttk.Label(root)
+label.grid(row=0, column=8, padx=5, pady=5, sticky="we")
+
+
+def update_speed(val):
+    print(f"updating speed to {val}")
+    label["text"] = f"Speed: {speed}"
+
+
+scale = ttk.Scale(
+    mainframe,
+    orient="horizontal",
+    length=200,
+    from_=0.001,
+    to=0.05,
+    variable=sp,
+    command=update_speed,
+)
+scale.grid(row=0, column=9, padx=5, pady=5)
+scale.set(default_speed)
+
+
 def start_algorithm():
+    speed = scale.get()
+    print(f"speed on start is {speed}")
     data = generate_data()
     algo = algorithm_menu.get()
     match algo:
         case "Bubble Sort":
-            bubble_sort(data, speed, canvas, root, SW)
+            bubble_sort(data, float(speed), canvas, root, SW)
         case "Selection Sort":
-            selection_sort(data, speed, canvas, root, SW)
+            selection_sort(data, float(speed), canvas, root, SW)
         case "Insertion Sort":
             insertionSort(data, float(speed), canvas, root, SW)
         case "Merge Sort":
