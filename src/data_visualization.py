@@ -1,9 +1,9 @@
 import random
 
-frame_width = 2500
-frame_height = 1400
-canvas_width = 2400
-canvas_height = 1300
+frame_width = 1800
+frame_height = 900
+canvas_width = 1700
+canvas_height = 800
 heigh_multiplier = 1000
 min_val = 1
 max_val = 400
