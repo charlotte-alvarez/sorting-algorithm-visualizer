@@ -173,3 +173,47 @@ def merge_sort(data, l, r, time_tick, canvas, root, anchor_direction):
             root=root,
             anchor_direction=anchor_direction,
         )
+
+
+def heapify(data, n, i, time_tick, canvas, root, anchor_direction):
+    length = len(data)
+    largest = i
+    l = 2 * i + 1
+    r = 2 * i + 2
+
+    if l < n and data[l] > data[largest]:
+        largest = l
+
+    if r < n and data[r] > data[largest]:
+        largest = r
+
+    if largest != i:
+        data[i], data[largest] = data[largest], data[i]
+        draw_data(
+            data,
+            get_color_data(length, 0, length - 1, largest, largest + 1, True),
+            canvas,
+            root,
+            anchor_direction,
+        )
+        time.sleep(time_tick)
+        heapify(data, n, largest, time_tick, canvas, root, anchor_direction)
+
+
+def heap_sort(data, time_tick, canvas, root, anchor_direction):
+    length = len(data)
+
+    for i in range(length // 2 - 1, -1, -1):
+        heapify(data, length, i, time_tick, canvas, root, anchor_direction)
+
+    for i in range(length - 1, 0, -1):
+        data[i], data[0] = data[0], data[i]  # Swap max to end
+        draw_data(
+            data,
+            get_color_data(length, 0, length - 1, i, i + 1, True),
+            canvas,
+            root,
+            anchor_direction,
+        )
+        time.sleep(time_tick)
+        heapify(data, i, 0, time_tick, canvas, root, anchor_direction)

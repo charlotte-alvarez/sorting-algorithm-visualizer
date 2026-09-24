@@ -1,7 +1,7 @@
 from tkinter import ttk, Tk, N, W, E, S, StringVar, Button, Canvas, SW
 
 
-from algorithms import bubble_sort, selection_sort, insertionSort, merge_sort
+from algorithms import bubble_sort, selection_sort, insertionSort, merge_sort, heap_sort
 from data_visualization import (
     generate_data,
     draw_data,
@@ -18,6 +18,7 @@ algorithm_list = [
     "Selection Sort",
     "Insertion Sort",
     "Merge Sort",
+    "Heap Sort",
 ]
 
 # Set up the main application window & it's frame widget
@@ -86,6 +87,8 @@ def start_algorithm():
             insertionSort(data, float(speed), canvas, root, SW)
         case "Merge Sort":
             merge_sort(data, 0, len(data) - 1, float(speed), canvas, root, SW)
+        case "Heap Sort":
+            heap_sort(data, float(speed), canvas, root, SW)
 
     draw_data(data, ["green" for x in range(len(data))], canvas, root, SW)
 
