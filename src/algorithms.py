@@ -13,7 +13,7 @@ def bubble_sort(data, time_tick, canvas, root, anchor_direction):
                 data[j], data[j + 1] = data[j + 1], data[j]
                 draw_data(
                     data,
-                    get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+                    get_color_data(length, 0, length - 1, j, j + 1, True),
                     canvas,
                     root,
                     anchor_direction,
@@ -34,7 +34,7 @@ def selection_sort(data, time_tick, canvas, root, anchor_direction):
         data[i], data[min_index] = data[min_index], data[i]
         draw_data(
             data,
-            get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+            get_color_data(length, 0, length - 1, j, j + 1, True),
             canvas,
             root,
             anchor_direction,
@@ -57,7 +57,7 @@ def insertionSort(data, time_tick, canvas, root, anchor_direction):
             data[j + 1] = data[j]
             draw_data(
                 data,
-                get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+                get_color_data(length, 0, length - 1, j, j + 1, True),
                 canvas,
                 root,
                 anchor_direction,
@@ -67,7 +67,7 @@ def insertionSort(data, time_tick, canvas, root, anchor_direction):
         data[j + 1] = k
         draw_data(
             data,
-            get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+            get_color_data(length, 0, length - 1, j, j + 1, True),
             canvas,
             root,
             anchor_direction,
