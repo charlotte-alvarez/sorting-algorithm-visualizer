@@ -3,7 +3,7 @@ import random
 canvas_width = 1900
 canvas_height = 1060
 heigh_multiplier = 1000
-speed = 0.01
+speed = 0.02
 
 
 def generate_data():
@@ -22,7 +22,7 @@ def generate_data():
     return data
 
 
-def get_color_array(data_len, head, tail, border, curr_index, is_swapping=False):
+def get_color_data(data_len, head, tail, border, curr_index, is_swapping=False):
     color_array = []
 
     for i in range(data_len):
