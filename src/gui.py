@@ -44,11 +44,6 @@ def start_algorithm():
     draw_data(data, ["green" for x in range(len(data))], canvas, root, SW)
 
 
-def generate():
-    data = generate_data()
-    draw_data(data, ["red" for x in range(len(data))], canvas, root, SW)
-
-
 Button(mainframe, text="START", command=start_algorithm, bg="red").grid(
     row=0, column=3, padx=5, pady=5
 )
