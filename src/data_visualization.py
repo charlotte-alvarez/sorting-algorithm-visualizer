@@ -3,7 +3,7 @@ import random
 canvas_width = 1900
 canvas_height = 1060
 heigh_multiplier = 1000
-speed = 0.02
+speed = 0.01
 
 
 def generate_data():

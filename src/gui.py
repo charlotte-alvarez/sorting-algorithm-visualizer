@@ -1,7 +1,7 @@
 from tkinter import ttk, Tk, N, W, E, S, StringVar, Button, Canvas, SW
 
 
-from algorithms import bubble_sort, selection_sort
+from algorithms import bubble_sort, selection_sort, insertionSort
 from data_visualization import (
     generate_data,
     draw_data,
@@ -14,6 +14,7 @@ from data_visualization import (
 algorithm_list = [
     "Bubble Sort",
     "Selection Sort",
+    "Insertion Sort",
 ]
 
 # Set up the main application window & it's frame widget
@@ -35,10 +36,7 @@ ttk.Label(mainframe, text="Algorithm: ", background="grey").grid(
 )
 algorithm_var = StringVar()
 algorithm_menu = ttk.Combobox(
-    mainframe,
-    textvariable=algorithm_var,
-    background="grey",
-    values=algorithm_list
+    mainframe, textvariable=algorithm_var, background="grey", values=algorithm_list
 )
 algorithm_menu.grid(row=0, column=1, padx=5, pady=5)
 algorithm_menu.current(0)
@@ -47,10 +45,14 @@ algorithm_menu.current(0)
 def start_algorithm():
     data = generate_data()
     algo = algorithm_menu.get()
-    if algo == "Bubble Sort":
-        bubble_sort(data, speed, canvas, root, SW)
-    if algo == "Selection Sort":
-        selection_sort(data, speed, canvas, root, SW)
+    match algo:
+        case "Bubble Sort":
+            bubble_sort(data, speed, canvas, root, SW)
+        case "Selection Sort":
+            selection_sort(data, speed, canvas, root, SW)
+        case "Insertion Sort":
+            insertionSort(data, speed, canvas, root, SW)
+
     draw_data(data, ["green" for x in range(len(data))], canvas, root, SW)
 
 

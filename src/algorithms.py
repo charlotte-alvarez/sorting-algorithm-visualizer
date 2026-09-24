@@ -41,3 +41,35 @@ def selection_sort(data, time_tick, canvas, root, anchor_direction):
         )
         time.sleep(time_tick)
     draw_data(data, ["green" for x in range(length)], canvas, root, anchor_direction)
+
+
+def insertionSort(data, time_tick, canvas, root, anchor_direction):
+    length = len(data)
+
+    if length <= 1:
+        draw_data(
+            data, ["green" for x in range(length)], canvas, root, anchor_direction
+        )
+    for i in range(1, length):
+        k = data[i]
+        j = i - 1
+        while j >= 0 and k < data[j]:
+            data[j + 1] = data[j]
+            draw_data(
+                data,
+                get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+                canvas,
+                root,
+                anchor_direction,
+            )
+            time.sleep(time_tick)
+            j -= 1
+        data[j + 1] = k
+        draw_data(
+            data,
+            get_color_data(length, 0, len(data) - 1, j, j + 1, True),
+            canvas,
+            root,
+            anchor_direction,
+        )
+        time.sleep(time_tick)
